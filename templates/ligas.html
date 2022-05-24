@@ -1,0 +1,54 @@
+{% extends '/base.html' %}
+{% block content %}
+
+        <main>
+          <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Crear una liga privada</a>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Ingresar a una liga</button>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+          </p>
+          <div class="row">
+            <div class="col">
+              <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="card card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
+              </div>
+            </div>
+          </div>
+          <table class="table table-hover tabla_liga">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Liga</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for liga in ligas %}
+              <tr>
+                <th scope="row">{{liga[0]}}</th>
+                <td><button class="btn_liga" data-liga="{{liga[0]}}">{{liga[1]}}</button></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </main>
+        <script>
+          $(document).ready(function(){
+            $('.btn_liga').click(function(){
+              var liga = $(this).data("liga");
+              window.location.href="/liga/"+liga;
+            })
+          })
+        </script>     
+        
+        
+        
+{% endblock %}

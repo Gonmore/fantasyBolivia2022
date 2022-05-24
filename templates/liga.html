@@ -1,0 +1,36 @@
+{% extends '/base.html' %}
+{% block content %}
+
+        <main>
+          <p class="h1 titulo_liga">LIGA {{nombre}}</p>
+          <h1></h3>
+          <table class="table table-hover tabla_liga">
+            <thead>
+              <tr>
+                
+                <th scope="col">Nombre</th>
+                <th scope="col">Puntos</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for liga in ligas %}
+              <tr>
+                <td><button class="btn_liga" data-liga="{{liga[0]}}">{{liga[1]}}</button></td>
+                <th scope="row">{{liga[2]}}</th>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </main>
+        <script>
+          $(document).ready(function(){
+            $('.btn_liga').click(function(){
+              var usr = $(this).data("liga");
+              window.location.href="/p/"+usr;
+            })
+          })
+        </script>      
+        
+        
+        
+{% endblock %}

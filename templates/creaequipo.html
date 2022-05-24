@@ -1,0 +1,348 @@
+{% extends '/base.html' %}
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
+        
+        <main class="container_select">
+          <div class="row mb-5 pagina-general" aria-hidden="true">
+            <div class="input-group mb-3"id="filadatos">
+              <div class="input-group-prepend">
+                <span class="input-group-text" >Nombre de tu equipo</span>
+              </div>
+              <input type="text" class="form-control" id="nombre_equipo" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder=".......FC">
+              <div class="input-group-prepend" id="columnapresupuesto">
+                <span class="input-group-text" >Presupuesto: &nbsp; <b id="campopresupuesto">90</b> MBs</span>
+                </div>
+              </div>
+              
+
+            <!-- TABLA y Filtro-->
+            <div class="col-5 cajafiltro" >
+              <fieldset>
+                <input type="text" class="text-input" placeholder="Buscar..." id="filter" value="" />
+                <span id="filter-count"></span>
+                <p id="no-count"></p>
+            </fieldset>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input filtro_pos" type="checkbox" id="filtro_POR1" value="POR">
+                <label class="form-check-label" id="filtro_POR" for="filtro_POR" value="Goalkeeper">POR</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input filtro_pos" type="checkbox" id="filtro_DEF" value="DEF">
+                <label class="form-check-label" for="inlineCheckbox2">DEF</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input filtro_pos" type="checkbox" id="filtro_MED" value="MED">
+                <label class="form-check-label" for="inlineCheckbox3">MED</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input filtro_pos" type="checkbox" id="filtro_ATA" value="ATA">
+                <label class="form-check-label" for="inlineCheckbox2">ATA</label>
+              </div>
+              
+              <div id="lista1">
+              <table class="tablesorter-ice tablesorter tabla-fija" id="tabla">
+                <thead class="table-dark">
+                  
+                    <tr>
+                      <th scope="col1"> </th>
+                      <th scope="col2">Jugador/Club</th>
+                      <th scope="col3" class="sortable">Pos</th>
+                      <th scope="col4">Pts</th>
+                      <th scope="col5">Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for jugador in jugadores %}
+                    <tr>
+                      <td scope="col1"><button class="boton-info botoninfo btn_{{jugador[0]}}" data-id='{{jugador[0]}}' id="btn_{{jugador[0]}}" team= "{{jugador[7]}}" name= "{{jugador[2]}}" price="{{jugador[5]}}" timage="{{jugador[8]}}"><img src= {{jugador[1]}} class="img-responsive img-rounded" id="foto_jugador"></button></td>
+                      <td scope="col2"><button class="boton-info botoninfo btn_{{jugador[0]}}" data-id='{{jugador[0]}}' id="btn_{{jugador[0]}}" team= "{{jugador[7]}}" name= "{{jugador[2]}}" price="{{jugador[5]}}" timage="{{jugador[8]}}">{{jugador[2]}}<br><b>Club: {{jugador[6]}}</b></button></td>
+                      <td scope="col3" class="col3">{{jugador[3]}}</td>
+                      <td scope="col4">{{jugador[4]}}</td>
+                      <td scope="col5">{{jugador[5]}}</td>
+                    
+                    </tr>
+                    {% endfor %}
+                  </tbody>                
+              </table>
+            </div>
+            </div>
+
+            <!-- Guia en Celu-->
+            <!-- <div id="smartwizard">
+              <ul class="nav">
+                 <li>
+                     <a class="nav-link" href="#step-1">
+                        Step 1
+                     </a>
+                 </li>
+                 <li>
+                     <a class="nav-link" href="#step-2">
+                        Step 2
+                     </a>
+                 </li>
+                 <li>
+                     <a class="nav-link" href="#step-3">
+                        Step 3
+                     </a>
+                 </li>
+                 <li>
+                     <a class="nav-link" href="#step-4">
+                        Step 4
+                     </a>
+                 </li>
+              </ul>
+           
+              <div class="tab-content">
+                 <div id="step-1" class="tab-pane" role="tabpanel">
+                    Step content
+                 </div>
+                 <div id="step-2" class="tab-pane" role="tabpanel">
+                    Step content
+                 </div>
+                 <div id="step-3" class="tab-pane" role="tabpanel">
+                    Step content
+                 </div>
+                 <div id="step-4" class="tab-pane" role="tabpanel">
+                    Step content
+                 </div>
+              </div>
+            </div>
+            -->
+            
+            <!-- Mensaje-->
+            <div class="card border-primary mb-3" id="overlay" style="max-width: 18rem;">
+              <div class="card-header"></div>
+              <div class="card-body text-primary">
+                <h5 class="card-title">Elije tu primer jugador</h5>
+                <p class="card-text"> haz click en la imagen</p>
+                <span class="material-icons md-24">
+                  transit_enterexit
+                  </span>
+              </div>
+            </div>
+
+            <!-- Grid, 15 jugadores unselected/select-->
+            
+            <div id="grid-container">
+              <div class="cuadro_contenedor"></div>
+              <div class="cuadro_contenedor"></div>
+              <div class="cuadro_contenedor"></div>
+              <div class="cuadro_contenedor"></div>
+              <div class="cuadro_contenedor"></div>
+              <div class="cuadro_contenedor"></div>
+              <div class="cuadro_contenedor">
+                <div class="casilla"><button id="btn_A3" class="jugador_ico cuadro_int" data-pos="ATA"><img src="static/images/PL.png" id="A3" alt="Micha" data-pos="ATA" class="img-fluid rounded"></button></div>
+              <div class="menu_jug">                
+                  <button type="button" class="btn-close" data-pos="A3" aria-label="Close"data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo" ></button>
+                </div>
+              </div>
+              <div class="cuadro_contenedor">
+                <div class="casilla"><button id="btn_A2" class="jugador_ico cuadro_int" data-pos="ATA"><img src="static/images/PL.png" id="A2" alt="Micha" class="img-fluid rounded"></button></div>
+              <div class="menu_jug">                
+                  <button type="button" class="btn-close" data-pos="A2" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo"></button>
+                </div>
+              </div>
+              <div class="cuadro_contenedor">
+                <div class="casilla" data-pos="ATA"><button id="btn_A1" data-pos="ATA" class="jugador_ico cuadro_int"><img src="static/images/PL.png" id="A1" alt="Micha" data-pos="ATA" class="img-fluid rounded"></button></div>
+              <div class="menu_jug">                
+                  <button type="button" class="btn-close" data-pos="A1"  aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo"></button>
+                </div>
+              </div>
+              <div class="cuadro_contenedor"></div>
+              <div class="cuadro_contenedor">
+                <div class="casilla"><button id="btn_M5" data-pos="MED" class="jugador_ico cuadro_int"><img src="static/images/PL.png" id="M5" alt="Micha" class="img-fluid rounded"></button></div>
+              <div class="menu_jug">                
+                  <button type="button" class="btn-close" data-pos="M5" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo"></button>
+                </div>
+              </div>
+              <div class="cuadro_contenedor">
+                <div class="casilla"><button id="btn_M4" data-pos="MED" class="jugador_ico cuadro_int"><img src="static/images/PL.png" id="M4" alt="Micha" class="img-fluid rounded"></button></div>
+              <div class="menu_jug">                
+                  <button type="button" class="btn-close" data-pos="M4" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo"></button>
+                </div>
+              </div>
+              <div class="cuadro_contenedor">
+                <div class="casilla"><button id="btn_M3" data-pos="MED" class="jugador_ico cuadro_int"><img src="static/images/PL.png" id="M3" alt="Micha" class="img-fluid rounded"></button></div>
+              <div class="menu_jug">                
+                  <button type="button" class="btn-close" data-pos="M3" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo"></button>
+                </div>
+              </div>
+              <div class="cuadro_contenedor">
+                <div class="casilla"><button id="btn_M2" data-pos="MED" class="jugador_ico cuadro_int"><img src="static/images/PL.png" id="M2" alt="Micha" class="img-fluid rounded"></button></div>
+              <div class="menu_jug">                
+                  <button type="button" class="btn-close" data-pos="M2" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo"></button>
+                </div>
+              </div>
+              <div class="cuadro_contenedor">
+                <div class="casilla"><button id="btn_M1" data-pos="MED" class="jugador_ico cuadro_int"><img src="static/images/PL.png" id="M1" alt="Micha" class="img-fluid rounded"></button></div>
+              <div class="menu_jug">                
+                  <button type="button" class="btn-close" data-pos="M1" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo"></button>
+                </div>
+              </div>
+              <div class="cuadro_contenedor">
+                <div class="casilla"><button id="btn_D5" data-pos="DEF" class="jugador_ico cuadro_int"><img src="static/images/PL.png" id="D5" alt="Micha" class="img-fluid rounded"></button></div>
+              <div class="menu_jug">                
+                  <button type="button" class="btn-close" data-pos="D5" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo"></button>
+                </div>
+              </div>
+              <div class="cuadro_contenedor">
+                <div class="casilla"><button id="btn_D4" data-pos="DEF" class="jugador_ico cuadro_int"><img src="static/images/PL.png" id="D4" alt="Micha" class="img-fluid rounded"></button></div>
+              <div class="menu_jug">                
+                  <button type="button" class="btn-close" data-pos="D4" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo"></button>
+                </div>
+              </div>
+              <div class="cuadro_contenedor">
+                <div class="casilla"><button id="btn_D3" data-pos="DEF" class="jugador_ico cuadro_int"><img src="static/images/PL.png" id="D3" alt="Micha" class="img-fluid rounded"></button></div>
+              <div class="menu_jug">                
+                  <button type="button" class="btn-close" data-pos="D3" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo"></button>
+                </div>
+              </div>
+              <div class="cuadro_contenedor">
+                <div class="casilla"><button id="btn_D2" data-pos="DEF" class="jugador_ico cuadro_int"><img src="static/images/PL.png" id="D2" alt="Micha" class="img-fluid rounded"></button></div>
+              <div class="menu_jug">                
+                  <button type="button" class="btn-close" data-pos="D2" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo"></button>
+                </div>
+              </div>
+              <div class="cuadro_contenedor">
+                <div class="casilla"><button id="btn_D1" data-pos="DEF" class="jugador_ico cuadro_int"><img src="static/images/PL.png" id="D1" alt="Micha" class="img-fluid rounded"></button></div>
+              <div class="menu_jug">                
+                  <button type="button" class="btn-close" data-pos="D1" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo"></button>
+                </div>
+              </div>
+              <div class="cuadro_contenedor"></div>
+              <div class="cuadro_contenedor">
+                <div class="casilla"><button id="btn_P2" data-pos="POR" class="jugador_ico cuadro_int"><img src="static/images/PO.png" id="P2" alt="Micha" class="img-fluid rounded"></button></div>
+                <div class="menu_jug">                
+                    <button type="button" class="btn-close" data-pos="P2" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo"></button>
+                  </div>
+              </div>
+              <div class="cuadro_contenedor"></div>
+              <div class="cuadro_contenedor">
+                <div class="casilla"><button id="btn_P1" data-pos="POR" class="jugador_ico cuadro_int"><img src="static/images/PO.png" id="P1" alt="Micha" class="img-fluid rounded"></button></div>
+                <div class="menu_jug">                
+                  <button type="button" class="btn-close" data-pos="P1" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Quitar del equipo"></button>
+                </div>
+              </div>
+              <div class="cuadro_contenedor"></div>
+             <!-- <div class="casilla"><button id="btn_P1" class="jugador_ico"><img src="static/images/PO.png" id="P1" alt="Micha" class="img-fluid rounded"></button></div>
+              -->         
+            </div>
+            
+
+            <!-- Trigger alerta o confirmacion de equipo-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn_reiniciar" >Descartar</button>
+              <button type="button" class="btn btn-primary btn_creaequipo">Confirmar equipo</button>
+            </div>
+          </div>
+           
+        </main>
+        
+    
+        <!-- Modal Datos Jugador-->
+        <div class="modal fade" id="empModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Datos del jugador</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+              
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary botonadd">Agregar a tu equipo</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+         <!-- Modal Reglas-->
+         <div class="modal fade" id="reglasModal" tabindex="-1" aria-labelledby="reglasModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Reglas del Fantasy fútbol</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-bod">
+                <i><center> - Debes elegir una plantilla de 15 jugadores</center></i>
+                <i><center> - Cada jugador tiene un precio y cuentas con presupuesto limitado</center></i>
+                <i><center> por lo tanto deberas contar con algunas estrellas y jugadores revelación</center></i>
+                <i><center> - Un máximo de 3 jugadores de cada club</center></i>
+                <i><center> - Tus jugadores sumaran puntos en base a su actuación en la vida real</center></i>
+                <i><center> - Mas adelante seleccionaras a los titulares y suplentes</center></i>
+                <i><center> - En cada fecha de juego se habilitara una transferencia de jugador</center></i>
+                <i><center> que podras usar si algun jugador se lesiona o no esta rindiendo como esperabas</center></i>
+
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-empezar" data-bs-dismiss="modal">Empezar!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <!-- Modal Fav-->
+        <div class="modal fade" id="favModal" tabindex="-1" role="dialog" aria-labelledby="favModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="favModalCenterTitle">Que club ganará este torneo?</h5>
+              </div>
+              <div class="modal-body">
+                <table class="tablesorter-ice tablesorter" id="tabla-equipos">
+                  <thead class="table-dark table-hover">
+                    
+                    <tr>
+                      <th scope="colu1"> Logo </th>
+                      <th scope="colu2"> Equipo </th>
+                      <th scope="colu3"> Seleccionar </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for equipo in equipos %}
+                    <tr>
+                      <td scope="colu1"><span class="btn_fav btn_{{equipo[0]}} centrado" id="btn_{{equipo[0]}}" team= "{{equipo[0]}}" ><img src= {{equipo[2]}} class="img-responsive img-rounded" id="foto_jugador"></span></td>
+                      <td scope="colu2"><span class="btn_fav btn_{{equipo[0]}} centrado" id="btn_{{equipo[0]}}" team= "{{equipo[0]}}" >{{equipo[1]}}</span></td>
+                      <td scope="colu3"> <input type="checkbox" class="team_checkbox" aria-label="Checkbox for following text input" value="{{equipo[0]}}"></td>
+                    </tr>
+                      {% endfor %}
+                  </tbody>                
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Confirmar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal Alerta-->
+        <div class="modal fade" id="altModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Perderlo todo!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-bod">
+                <center>   No se guardaran los cambios realizados!</center>
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary botonelimina">Reiniciar todo</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>    
+    <script src="static/js/script_creaequipo.js"></script>
+
+
+      {% endblock %}

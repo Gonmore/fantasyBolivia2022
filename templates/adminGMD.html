@@ -1,0 +1,74 @@
+{% extends '/base.html' %}
+{% block content %}
+
+            
+        <main class="container_select">
+          <div class="row mb-5" aria-hidden="true">
+            <form action="/adminGMD" class="formulario_admin" method="POST">
+              <input type="text" class="form-control" name="API_league_ID" placeholder="Ingrese ID de Liga [crea Stages]">
+              <button type="submit" class="btn btn-secondary">Button</button>
+              
+              <aside>{%with messages = get_flashed_messages(with_categories=true)%}
+                {%if messages %}
+                    
+                        {%for category, message in messages%}
+                            <div class="alert {{category}}" id="idMensajeError">
+                                    <strong>Info!</strong> {{message}} 
+                            </div>
+                        {%endfor%}
+                    {%endif%}
+                {%endwith%}
+              </aside>
+            </form>
+            <form action="/adminTarea" class="formulario_admin" method="POST">
+              <button type="submit" class="btn btn-secondary">Cambia_Imagenes</button>
+              
+              
+            </form>
+            <form action="/adminUPD" class="formulario_admin" method="POST">
+              <button type="submit" class="btn btn-secondary">Actualiza eventos y fixtures</button>
+              
+              
+            </form>
+            <form action="/adminLigas" class="formulario_admin" method="POST">
+              <button type="submit" class="btn btn-secondary">Crea tabla Ligas</button>
+              
+              
+            </form>
+            <form action="/adminTasks" class="formulario_admin" method="POST">
+              <button type="submit" class="btn btn-secondary">Crea tarea livescores</button>
+              
+              
+            </form>
+            </form>
+            <form action="/adminTPuntos" class="formulario_admin" method="POST">
+              <button type="submit" class="btn btn-secondary">Llena tabla Puntos</button>
+              
+              
+            </form>
+            <aside>{%with messages = get_flashed_messages(with_categories=true)%}
+              {%if messages %}
+                  
+                      {%for category, message in messages%}
+                          <div class="alert {{category}}" id="idMensajeError">
+                                  <strong>Info!</strong> {{message}} 
+                          </div>
+                      {%endfor%}
+                  {%endif%}
+              {%endwith%}
+            </aside>
+            
+          </div>
+
+
+            <!-- Trigger alerta o confirmacion de equipo-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn_reiniciar" >Descartar</button>
+              <button type="button" class="btn btn-primary btn_guardar">Confirmar equipo</button>
+            </div>
+          </div>
+           
+        </main>
+        
+
+      {% endblock %}

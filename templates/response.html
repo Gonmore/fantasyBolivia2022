@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="{{url_for('static', filename='css/estilos.css')}}">
+{% for row in employeelist %} 
+<table class="datos-jugador" border='0' width='100%'>
+    <tr>
+        <td width="150"><img src="{{row[0]}}">
+        <td style="padding:10px;">
+        <p><b>Nombre:</b> {{row[1]}}</p>
+        <p><b>Posición:</b> {{row[2]}}</p>
+        <p><b>Equipo:</b> {{row[3]}}</p>
+        <p><b>Nacionalidad:</b> {{row[5]}}/{{row[9]}}</p>
+        <p><b>F.Nacimiento:</b> {{row[6]}}</p>
+        <p><b>Alt:</b> {{row[7]}}<b>&nbsp;&nbsp;Peso:</b> {{row[8]}}</p>
+        </td>
+        
+    </tr>
+</table>
+<center><b><font COLOR="green">PRECIO:&nbsp; {{totales[8]}} MBs</font></b> </center>
+<div id="tala_totales">
+
+
+    <table class="table datos">
+      <thead class="table-dark">
+        
+          <tr>
+            <th scope="col"> </th>
+            <th scope="col">Min</th>
+            <th scope="col">P.Imb</th>
+            <th scope="col">Gol</th>
+            <th scope="col">Asist</th>
+            <th scope="col"><img src= static/images/YC.png class="img-responsive" id="tarjeta"></th>
+            <th scope="col"><img src= static/images/RC.png class="img-responsive" id="tarjeta"></th>
+            <th scope="col">Pts</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <th>Temp 2022</th>  
+            <th scope="col">{{totales[1]}}</th>
+            <th scope="col">{{totales[2]}}</th>
+            <th scope="col">{{totales[3]}}</th>
+            <th scope="col">{{totales[4]}}</th>
+            <th scope="col">{{totales[5]}}</th>
+            <th scope="col">{{totales[6]}}</th>
+            <th scope="col">{{totales[7]}}</th>
+           </tr>
+           <tr>
+            <th>Temp 2021</th>  
+            <td scope="col">{{total[1]}}</td>
+            <td scope="col">{{total[2]}}</td>
+            <th scope="col">{{total[3]}}</th>
+            <th scope="col">{{total[4]}}</th>
+            <th scope="col">{{total[5]}}</th>
+            <th scope="col">{{total[6]}}</th>
+            <th scope="col">{{total[7]}}</th>
+           </tr>
+        </tbody>                
+    </table>
+
+</div>
+
+{% endfor %}
+
+

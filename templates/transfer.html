@@ -1,0 +1,343 @@
+{% extends '/base.html' %}
+{% block content %}
+
+        <main class="container_select">
+          <div class="row mb-5" aria-hidden="true" id="fila_principal">
+            <div class="input-group-prepend">
+              <span class="input-group-text" >Equipo:&nbsp; <b>{{name_team}}&nbsp;&nbsp;</b></span>
+            </div>
+              
+            <div class="input-group-prepend" id="columnapresupuesto">
+              <span class="input-group-text"> &nbsp; Presupuesto: &nbsp; <b id="campopresupuesto">90</b> MBs</span>
+            </div>            
+            
+            
+
+                <div class="col" id="col2">
+                  <div class="cuadro_cont_bench">
+                    <div class="cuadro_int_bench_des">
+                      <div class="suplente_int" id="suplente_3"></div>
+                      <div class="suplente_int" id="suplente_2"></div>
+                      <div class="suplente_int" id="suplente_1"></div>
+                      <div class="suplente_int" id="suplente_0"></div>
+                    </div>
+                  </div>
+                  <div class="cuadro_int_bench">
+                    <button id="bench">
+                      <img src="static/images/Bench.png" alt="Banca de suplentes" id="banca_sup">
+                    </button>
+                  </div>
+                  <div class="cuadro_int_bench"></div>
+                </div>
+                <!-- Grid, 15 jugadores unselected/select-->
+                <div class="col-5 page-wrapper"> 
+                  <div class="row_cancha" id="row_rival">
+                    <div class="column cuadro_contenedor" id="cuadro"></div>
+                    <div class="column cuadro_contenedor"></div>
+                    <div class="column cuadro_contenedor"></div>
+                    <div class="column cuadro_contenedor"></div>
+                    <div class="column cuadro_contenedor"></div>
+                    <div class="column cuadro_contenedor"></div>
+                  </div>
+                  <div class="row_cancha" id="row_Ata">
+                    <div class="column cuadro_contenedor " id="cuadro_A3">
+                      <div class="casilla" id="casilla_A3">
+                        <button id="btn_A3" class="jugador_ico cuadro_int">
+                          <img src="static/images/PL.png" id="A3" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jA3[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_A3' data-pos='{{jA3[4]}}' data-usr='{{jA3[2]}}' data-price='{{jA3[12]}}' data-team='{{jA3[3]}}'><b>{{jA3[1]}}</b><br><b>{{jA3[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="column cuadro_contenedor " id="cuadro_A2">
+                      <div class="casilla" id="casilla_A2">
+                        <button id="btn_A2" class="jugador_ico cuadro_int">
+                          <img src="static/images/PL.png" id="A2" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jA2[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_A2' data-pos='{{jA2[4]}}' data-usr='{{jA2[2]}}' data-price='{{jA2[12]}}' data-team='{{jA2[3]}}'><b>{{jA2[1]}}</b><br><b>{{jA2[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="column cuadro_contenedor " id="cuadro_A1">
+                      <div class="casilla" id="casilla_A1">
+                        <button id="btn_A1" class="jugador_ico cuadro_int">
+                          <img src="static/images/PL.png" id="A1" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jA1[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_A1' data-pos='{{jA1[4]}}' data-usr='{{jA1[2]}}' data-price='{{jA1[12]}}' data-team='{{jA1[3]}}'><b>{{jA1[1]}}</b><br><b>{{jA1[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row_cancha" id="row_Med">
+                    <div class="column cuadro_contenedor" id="cuadro_M5">
+                      <div class="casilla" id="casilla_M5">
+                        <button id="btn_M5" class="jugador_ico cuadro_int">
+                          <img src="static/images/PL.png" id="M5" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jM5[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_M5' data-pos='{{jM5[4]}}' data-usr='{{jM5[2]}}' data-price='{{jM5[12]}}' data-team='{{jM5[3]}}'><b>{{jM5[1]}}</b><br><b>{{jM5[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="column cuadro_contenedor" id="cuadro_M4">
+                      <div class="casilla" id="casilla_M4">
+                        <button id="btn_M4" class="jugador_ico cuadro_int">
+                          <img src="static/images/PL.png" id="M4" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jM4[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_M4' data-pos='{{jM4[4]}}' data-usr='{{jM4[2]}}' data-price='{{jM4[12]}}' data-team='{{jM4[3]}}'><b>{{jM4[1]}}</b><br><b>{{jM4[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="column cuadro_contenedor" id="cuadro_M3">
+                      <div class="casilla" id="casilla_M3">
+                        <button id="btn_M3" class="jugador_ico cuadro_int">
+                          <img src="static/images/PL.png" id="M3" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jM3[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_M3' data-pos='{{jM3[4]}}' data-usr='{{jM3[2]}}' data-price='{{jM3[12]}}' data-team='{{jM3[3]}}'><b>{{jM3[1]}}</b><br><b>{{jM3[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="column cuadro_contenedor" id="cuadro_M2">
+                      <div class="casilla" id="casilla_M2">
+                        <button id="btn_M2" class="jugador_ico cuadro_int">
+                          <img src="static/images/PL.png" id="M2" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jM2[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_M2' data-pos='{{jM2[4]}}' data-usr='{{jM2[2]}}' data-price='{{jM2[12]}}' data-team='{{jM2[3]}}'><b>{{jM2[1]}}</b><br><b>{{jM2[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="column cuadro_contenedor" id="cuadro_M1">
+                      <div class="casilla" id="casilla_M1">
+                        <button id="btn_M1" class="jugador_ico cuadro_int">
+                          <img src="static/images/PL.png" id="M1" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jM1[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_M1' data-pos='{{jM1[4]}}' data-usr='{{jM1[2]}}' data-price='{{jM1[12]}}' data-team='{{jM1[3]}}'><b>{{jM1[1]}}</b><br><b>{{jM1[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row_cancha" id="row_Def">
+                    <div class="column cuadro_contenedor" id="cuadro_D5"> 
+                      <div class="casilla" id="casilla_D5">
+                        <button id="btn_D5" class="jugador_ico cuadro_int">
+                          <img src="static/images/PL.png" id="D5" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jD5[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_D5' data-pos='{{jD5[4]}}' data-usr='{{jD5[2]}}' data-price='{{jD5[12]}}' data-team='{{jD5[3]}}'><b>{{jD5[1]}}</b><br><b>{{jD5[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="column cuadro_contenedor" id="cuadro_D4">
+                      <div class="casilla" id="casilla_D4">
+                        <button id="btn_D4" class="jugador_ico cuadro_int">
+                          <img src="static/images/PL.png" id="D4" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jD4[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_D4' data-pos='{{jD4[4]}}' data-usr='{{jD4[2]}}' data-price='{{jD4[12]}}' data-team='{{jD4[3]}}'><b>{{jD4[1]}}</b><br><b>{{jD4[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="column cuadro_contenedor" id="cuadro_D3">
+                      <div class="casilla" id="casilla_D3">
+                        <button id="btn_D3" class="jugador_ico cuadro_int">
+                          <img src="static/images/PL.png" id="D3" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jD3[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_D3' data-usr='{{jD3[2]}}' data-pos='{{jD3[4]}}'  data-price='{{jD3[12]}}' data-team='{{jD3[3]}}'><b>{{jD3[1]}}</b><br><b>{{jD3[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="column cuadro_contenedor" id="cuadro_D2">
+                      <div class="casilla" id="casilla_D2">
+                        <button id="btn_D2" class="jugador_ico cuadro_int">
+                          <img src="static/images/PL.png" id="D2" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jD2[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_D2' data-usr='{{jD2[2]}}' data-price='{{jD2[12]}}' data-team='{{jD2[3]}}' data-pos='{{jD2[4]}}'><b>{{jD2[1]}}</b><br><b>{{jD2[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="column cuadro_contenedor" id="cuadro_D1">
+                      <div class="casilla" id="casilla_D1">
+                        <button id="btn_D1" class="jugador_ico cuadro_int">
+                          <img src="static/images/PL.png" id="D1" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jD1[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_D1' data-usr='{{jD1[2]}}' data-price='{{jD1[12]}}' data-team='{{jD1[3]}}' data-pos='{{jD1[4]}}'><b>{{jD1[1]}}</b><br><b>{{jD1[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row_cancha" id="row_Por">
+                    <div class="column cuadro_contenedor" id="cuadro_P1">
+                      <div class="casilla" id="casilla_P1">
+                        <button id="btn_P1" class="jugador_ico cuadro_int">
+                          <img src="static/images/PO.png" id="P1" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jP1[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_P1' data-usr='{{jP1[2]}}' data-price='{{jP1[12]}}' data-team='{{jP1[3]}}' data-pos='{{jP1[4]}}'><b>{{jP1[1]}}</b><br><b>{{jP1[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="column cuadro_contenedor" id="cuadro_P2">
+                      <div class="casilla_sup" id="casilla_P2">
+                        <button id="btn_P2" class="jugador_ico cuadro_int">
+                          <img src="static/images/PO.png" id="P2" alt="Micha" class="img-fluid rounded img_reemplazo">
+                          <img src='{{jP2[0]}}' alt='Micha' id='img_cambiada' class='img-fluid rounded img_P2' data-usr='{{jP2[2]}}' data-price='{{jP2[12]}}' data-team='{{jP2[3]}}' data-pos='{{jP2[4]}}'><b>{{jP2[1]}}</b><br><b>{{jP2[12]}}MBs</b>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="casilla"><button id="btn_P1" class="jugador_ico"><img src="static/images/PO.png" id="P1" alt="Micha" class="img-fluid rounded"></button></div>
+                    -->  
+                          
+                </div>
+            </div>
+              
+
+
+            
+           
+             
+          </div>
+
+            <!-- Trigger alerta o confirmacion de equipo-->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn_reiniciar" >Descartar</button>
+              <button type="button" class="btn btn-primary btn_guardar">Confirmar equipo</button>
+            </div>
+          </div>
+           
+        </main>
+        
+        <!-- Modal Datos Jugador sale-->
+        <div class="modal fade" id="empModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Datos del jugador</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+              
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary botonsus"><span class="material-icons md-24">
+                  change_circle
+                  </span>&nbsp; Sustituir</button>
+                <button type="button" class="btn btn-primary botontransf"><span class="material-icons md-24">
+                  compare_arrows
+                  </span>&nbsp; Transferir</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal Datos Jugador entra-->
+        <div class="modal fade" id="inModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Datos del jugador</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+              
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary btn_list"><span class="material-icons md-24">
+                  person_search
+                  </span>&nbsp; Seguir buscando</button>
+                <button type="button" class="btn btn-primary botonadd"><span class="material-icons md-24">
+                  compare_arrows
+                  </span>&nbsp; Comprar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+         <!-- Modal Tabla transfer-->
+         <div class="modal fade" id="tableModal" tabindex="-1" aria-labelledby="exModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exleModalLabel">Jugadores disponibles</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-boody">
+                <!-- TABLA y Filtro-->
+                  <div class="col-5 cajafiltroModal" >
+                   
+                  <!--
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="filtro_Por" value="Goalkeeper">
+                      <label class="form-check-label" id="filtro_POR" for="filtro_Por" value="Goalkeeper">POR</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="filtro_Def" value="Defender">
+                      <label class="form-check-label" for="inlineCheckbox2">DEF</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="filtro_Med" value="Midfielder">
+                      <label class="form-check-label" for="inlineCheckbox3">MED</label>
+                    </div> 
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="filtro_Ata" value="Attacker">
+                      <label class="form-check-label" for="inlineCheckbox2">ATA</label>
+                    </div> -->
+                    
+                    <div id="lista1">
+                      <fieldset>
+                        <input type="text" class="text-input" placeholder="Buscar..." id="filter" value="" />
+                        <span id="filter-count"></span>
+                        <p id="no-count"></p>
+                    </fieldset> 
+                    <table class="tablesorter-ice tablesorter tabla-fija" id="tabla">
+                      <thead class="table-dark">
+                        
+                        <tr>
+                          <th scope="col1"> </th>
+                          <th scope="col2">Jugador</th>
+                          <th scope="col3" class="sortable">Pos</th>
+                          <th scope="col4">Equipo</th>
+                          <th scope="col5">Pts</th>
+                          <th scope="col6">Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for jugador in jugadores %}
+                        <tr>
+                          <td scope="col1"><button class="boton-info botoninfo btn_{{jugador[0]}}" data-id='{{jugador[0]}}' id="btn_{{jugador[0]}}" team= "{{jugador[7]}}" name= "{{jugador[2]}}" price="{{jugador[5]}}" timage="{{jugador[8]}}"><img src= {{jugador[1]}} class="img-responsive img-rounded" id="foto_jugador"></button></td>
+                          <td scope="col2"><button class="boton-info botoninfo btn_{{jugador[0]}}" data-id='{{jugador[0]}}' id="btn_{{jugador[0]}}" team= "{{jugador[7]}}" name= "{{jugador[2]}}" price="{{jugador[5]}}" timage="{{jugador[8]}}">{{jugador[2]}}</button></td>
+                          <td scope="col3" class="col3">{{jugador[3]}}</td>
+                          <td scope="col4">{{jugador[6]}}</td>
+                          <td scope="col5">{{jugador[4]}}</td>
+                          <td scope="col6">{{jugador[5]}}</td>
+                        
+                        </tr>
+                          {% endfor %}
+                        </tbody>                
+                    </table>
+                  </div>
+                  </div>
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                
+                <button type="button" class="btn btn-primary botontransfin"><span class="material-icons md-24">
+                  compare_arrows
+                  </span>&nbsp; Transferir</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Alerta-->
+        <div class="modal fade" id="altModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Perderlo todo!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-bod">
+                <center>   No se guardaran los cambios realizados!</center>
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary botonelimina">Reiniciar todo</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+<script src="static/js/script_transfer.js"></script>
+
+
+      {% endblock %}
